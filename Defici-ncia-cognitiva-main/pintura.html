@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pintura Divertida · Amigo Ajuda</title>
+    <!-- Fontes e ícones -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Quicksand', sans-serif;
+            background-color: #f0f9ff;
+            color: #1e3d58;
+            font-size: 1.2rem;
+        }
+
+        .container-pintura {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+        }
+
+        /* CABEÇALHO */
+        .topo-pintura {
+            background: linear-gradient(135deg, #A7E0E0, #6A4E9B);
+            padding: 0.8rem 0;
+            border-bottom: 8px solid #F8B042;
+        }
+
+        .flex-between {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            background-color: #F45D4C;
+            padding: 0.3rem 2rem 0.3rem 1rem;
+            border-radius: 60px 20px 60px 20px;
+            border: 4px solid #FFE55C;
+        }
+
+        .icone-logo {
+            font-size: 3rem;
+            color: #FFE55C;
+        }
+
+        .logo-area h1 {
+            font-size: 2.2rem;
+            color: white;
+            text-shadow: 3px 3px 0 #057E8C;
+        }
+
+        .botao-voltar {
+            background-color: #F8B042;
+            color: #1e3d58;
+            padding: 0.9rem 2rem;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 1.4rem;
+            border: 4px solid #057E8C;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.8rem;
+            transition: 0.1s;
+        }
+
+        .botao-voltar:hover {
+            background-color: #FFE55C;
+            border-color: #F45D4C;
+            transform: scale(1.05);
+        }
+
+        /* ÁREA PRINCIPAL DE PINTURA */
+        .area-pintura {
+            background-color: #FFE55C;
+            border-radius: 80px 20px 80px 20px;
+            padding: 2rem;
+            margin: 2rem 0;
+            border: 8px solid #6A4E9B;
+            box-shadow: 15px 15px 0 #057E8C;
+        }
+
+        .instrucao {
+            background-color: #A7E0E0;
+            padding: 1rem 2rem;
+            border-radius: 60px;
+            display: inline-block;
+            margin-bottom: 2rem;
+            font-size: 1.6rem;
+            border: 4px solid #F45D4C;
+        }
+
+        .instrucao i {
+            color: #F45D4C;
+            margin-right: 1rem;
+        }
+
+        /* TELA DE DESENHO */
+        .canvas-wrapper {
+            background-color: white;
+            border-radius: 60px 20px 60px 20px;
+            padding: 1.5rem;
+            border: 6px solid #057E8C;
+            box-shadow: inset 0 0 0 3px #F8B042;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        canvas {
+            display: block;
+            margin: 0 auto;
+            width: 100%;
+            height: auto;
+            max-width: 800px;
+            border-radius: 40px 10px 40px 10px;
+            border: 4px solid #1e3d58;
+            background-color: white;
+            cursor: crosshair;
+            touch-action: none; /* melhor para touch */
+        }
+
+        /* BARRA DE FERRAMENTAS */
+        .ferramentas {
+            background-color: #6A4E9B;
+            padding: 2rem;
+            border-radius: 80px 20px 80px 20px;
+            border: 6px solid #F8B042;
+            margin-top: 2rem;
+        }
+
+        .cores {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            justify-content: center;
+            margin-bottom: 2rem;
+        }
+
+        .cor-btn {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            border: 5px solid white;
+            cursor: pointer;
+            transition: 0.1s;
+            box-shadow: 5px 5px 0 #1e3d58;
+        }
+
+        .cor-btn:hover {
+            transform: scale(1.1);
+            border-color: #FFE55C;
+        }
+
+        .cor-btn.ativa {
+            border: 8px solid #F8B042;
+            transform: scale(1.1);
+            box-shadow: 0 0 0 5px #F45D4C;
+        }
+
+        /* botões de ação */
+        .acoes {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            justify-content: center;
+            margin: 2rem 0;
+        }
+
+        .botao-acao {
+            background-color: #F8B042;
+            color: #1e3d58;
+            border: none;
+            font-size: 2rem;
+            padding: 1rem 2.5rem;
+            border-radius: 60px;
+            font-weight: 700;
+            border: 5px solid #057E8C;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 1rem;
+            transition: 0.1s;
+        }
+
+        .botao-acao:hover {
+            background-color: #F45D4C;
+            border-color: #FFE55C;
+            color: white;
+            transform: scale(1.03);
+        }
+
+        .botao-acao.borracha {
+            background-color: #A7E0E0;
+        }
+
+        /* tamanho pincel */
+        .controle-tamanho {
+            background-color: #A7E0E0;
+            padding: 1.5rem;
+            border-radius: 60px;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: center;
+            gap: 2rem;
+            border: 5px solid #F45D4C;
+        }
+
+        .controle-tamanho label {
+            font-size: 1.8rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+
+        input[type=range] {
+            width: 300px;
+            height: 20px;
+            background: #F8B042;
+            border-radius: 30px;
+            border: 3px solid #1e3d58;
+        }
+
+        #tamanhoValor {
+            background-color: #F45D4C;
+            color: white;
+            padding: 0.5rem 1.5rem;
+            border-radius: 40px;
+            font-size: 1.8rem;
+            font-weight: 700;
+            border: 3px solid #FFE55C;
+        }
+
+        /* dicas */
+        .dica {
+            background-color: #F45D4C;
+            color: white;
+            padding: 1rem;
+            border-radius: 60px;
+            text-align: center;
+            font-size: 1.4rem;
+            margin-top: 2rem;
+            border: 4px solid #FFE55C;
+        }
+
+        .dica i {
+            margin: 0 0.5rem;
+        }
+
+        /* rodapé */
+        .rodape-pintura {
+            background: #1e3d58;
+            color: white;
+            padding: 2rem;
+            text-align: center;
+            font-size: 1.6rem;
+            border-top: 12px solid #F8B042;
+            margin-top: 2rem;
+        }
+    </style>
+</head>
+<body>
+    <header class="topo-pintura">
+        <div class="container-pintura flex-between">
+            <div class="logo-area">
+                <i class="fas fa-paint-brush icone-logo"></i>
+                <h1>Pintura Mágica</h1>
+            </div>
+            <a href="index.html" class="botao-voltar"><i class="fas fa-arrow-left"></i> Voltar</a>
+        </div>
+    </header>
+
+    <main>
+        <div class="container-pintura">
+            <!-- ÁREA DE PINTURA -->
+            <div class="area-pintura">
+                <div class="instrucao">
+                    <i class="fas fa-fingerprint"></i> Use o dedo ou mouse para desenhar. Escolha as cores!
+                </div>
+
+                <!-- CANVAS -->
+                <div class="canvas-wrapper">
+                    <canvas id="telaDesenho" width="800" height="400"></canvas>
+                </div>
+
+                <!-- FERRAMENTAS -->
+                <div class="ferramentas">
+                    <!-- CORES BÁSICAS -->
+                    <div class="cores" id="coresPaleta">
+                        <button class="cor-btn" style="background-color: #000000;" data-cor="#000000" title="Preto"></button>
+                        <button class="cor-btn" style="background-color: #F45D4C;" data-cor="#F45D4C" title="Coral"></button>
+                        <button class="cor-btn" style="background-color: #F8B042;" data-cor="#F8B042" title="Laranja"></button>
+                        <button class="cor-btn" style="background-color: #FFE55C;" data-cor="#FFE55C" title="Amarelo"></button>
+                        <button class="cor-btn" style="background-color: #A7E0E0;" data-cor="#A7E0E0" title="Azul clarinho"></button>
+                        <button class="cor-btn" style="background-color: #6A4E9B;" data-cor="#6A4E9B" title="Roxo"></button>
+                        <button class="cor-btn" style="background-color: #057E8C;" data-cor="#057E8C" title="Verde-azulado"></button>
+                        <button class="cor-btn" style="background-color: #1e3d58;" data-cor="#1e3d58" title="Azul escuro"></button>
+                    </div>
+
+                    <!-- AÇÕES PRINCIPAIS -->
+                    <div class="acoes">
+                        <button class="botao-acao" id="borrachaBtn"><i class="fas fa-eraser"></i> Borracha</button>
+                        <button class="botao-acao" id="limparTudo"><i class="fas fa-trash-alt"></i> Limpar tudo</button>
+                    </div>
+
+                    <!-- CONTROLE DE TAMANHO -->
+                    <div class="controle-tamanho">
+                        <label><i class="fas fa-circle"></i> Tamanho do pincel:</label>
+                        <input type="range" id="tamanhoPincel" min="2" max="50" value="10">
+                        <span id="tamanhoValor">10</span>
+                    </div>
+
+                    <!-- DICA EXTRA -->
+                    <div class="dica">
+                        <i class="fas fa-lightbulb"></i> Dica: clique na borracha e passe por cima para apagar. Clique nas cores para trocar!
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="rodape-pintura">
+        <p><i class="fas fa-heart" style="color:#F45D4C;"></i> Desenhe à vontade! Use cores alegres.</p>
+    </footer>
+
+    <script>
+        // Configuração do canvas
+        const canvas = document.getElementById('telaDesenho');
+        const ctx = canvas.getContext('2d');
+
+        // Ajuste para resolução (evita borrão)
+        canvas.width = 800;
+        canvas.height = 400;
+
+        // Preencher fundo branco
+        ctx.fillStyle = '#FFFFFF';
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+        // Variáveis de estado
+        let desenhando = false;
+        let corAtual = '#000000'; // preto padrão
+        let tamanhoPincel = 10;
+        let modoBorracha = false;
+
+        // Elementos DOM
+        const tamanhoSlider = document.getElementById('tamanhoPincel');
+        const tamanhoValor = document.getElementById('tamanhoValor');
+        const borrachaBtn = document.getElementById('borrachaBtn');
+        const limparBtn = document.getElementById('limparTudo');
+        const botoesCor = document.querySelectorAll('.cor-btn');
+
+        // Atualizar exibição do tamanho
+        tamanhoSlider.addEventListener('input', (e) => {
+            tamanhoPincel = parseInt(e.target.value);
+            tamanhoValor.textContent = tamanhoPincel;
+        });
+
+        // Função para iniciar desenho
+        function comecarDesenho(e) {
+            desenhando = true;
+            desenhar(e);
+        }
+
+        // Função para parar desenho
+        function pararDesenho() {
+            desenhando = false;
+            ctx.beginPath(); // começa novo caminho para não conectar linhas
+        }
+
+        // Função principal de desenhar
+        function desenhar(e) {
+            if (!desenhando) return;
+
+            // Prevenir comportamento padrão (especialmente em touch)
+            e.preventDefault();
+
+            // Obter coordenadas (mouse ou toque)
+            let clientX, clientY;
+            if (e.touches) {
+                // Evento de toque
+                clientX = e.touches[0].clientX;
+                clientY = e.touches[0].clientY;
+            } else {
+                // Evento de mouse
+                clientX = e.clientX;
+                clientY = e.clientY;
+            }
+
+            // Calcular posição relativa ao canvas
+            const rect = canvas.getBoundingClientRect();
+            const scaleX = canvas.width / rect.width;   // proporção canvas / tamanho na tela
+            const scaleY = canvas.height / rect.height;
+
+            const x = (clientX - rect.left) * scaleX;
+            const y = (clientY - rect.top) * scaleY;
+
+            // Limitar dentro do canvas
+            if (x < 0 || x > canvas.width || y < 0 || y > canvas.height) return;
+
+            // Configurar estilo de desenho
+            ctx.lineWidth = tamanhoPincel;
+            ctx.lineCap = 'round'; // ponta redonda
+            ctx.lineJoin = 'round';
+
+            if (modoBorracha) {
+                ctx.strokeStyle = '#FFFFFF'; // branco (fundo)
+            } else {
+                ctx.strokeStyle = corAtual;
+            }
+
+            // Desenhar
+            ctx.lineTo(x, y);
+            ctx.stroke();
+            ctx.beginPath();
+            ctx.moveTo(x, y);
+        }
+
+        // Eventos de mouse
+        canvas.addEventListener('mousedown', comecarDesenho);
+        canvas.addEventListener('mousemove', desenhar);
+        canvas.addEventListener('mouseup', pararDesenho);
+        canvas.addEventListener('mouseleave', pararDesenho);
+
+        // Eventos de toque (mobile)
+        canvas.addEventListener('touchstart', comecarDesenho);
+        canvas.addEventListener('touchmove', desenhar);
+        canvas.addEventListener('touchend', pararDesenho);
+        canvas.addEventListener('touchcancel', pararDesenho);
+
+        // Selecionar cor
+        botoesCor.forEach(botao => {
+            botao.addEventListener('click', () => {
+                // Remover classe ativa de todos
+                botoesCor.forEach(btn => btn.classList.remove('ativa'));
+                // Adicionar ao clicado
+                botao.classList.add('ativa');
+                corAtual = botao.dataset.cor;
+                modoBorracha = false; // desativa borracha ao escolher cor
+                // feedback visual
+                borrachaBtn.style.backgroundColor = ''; // volta ao normal
+            });
+        });
+
+        // Ativar borracha
+        borrachaBtn.addEventListener('click', () => {
+            modoBorracha = true;
+            // Remover destaque das cores
+            botoesCor.forEach(btn => btn.classList.remove('ativa'));
+            // Destacar botão borracha (opcional)
+            borrachaBtn.style.backgroundColor = '#F45D4C';
+            borrachaBtn.style.color = 'white';
+        });
+
+        // Limpar tudo
+        limparBtn.addEventListener('click', () => {
+            ctx.fillStyle = '#FFFFFF';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            // Reiniciar caminho
+            ctx.beginPath();
+        });
+
+        // Ajuste para não arrastar a página ao desenhar em mobile
+        canvas.addEventListener('touchstart', (e) => e.preventDefault());
+        canvas.addEventListener('touchmove', (e) => e.preventDefault());
+
+        // Iniciar com cor preta ativa
+        document.querySelector('.cor-btn[data-cor="#000000"]').classList.add('ativa');
+
+        // Salvar desenho? (opcional, podemos adicionar um botão de salvar depois)
+        // Função extra: mostrar que a borracha está ativa (pode ser melhorada)
+    </script>
+</body>
+</html>
