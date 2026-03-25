@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Amigo Ajuda · site feliz e acessível</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@400;700&family=Quicksand:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🤝</text></svg>">
+</head>
+<body>
+
+    <!-- MENU DE ACESSIBILIDADE FLUTUANTE (FECHADO) -->
+    <div class="acessibilidade-container">
+        <button class="acess-toggle" id="toggleAcessibilidade" aria-label="Abrir menu de acessibilidade">
+            <i class="fas fa-universal-access"></i> Acessibilidade
+        </button>
+        <div class="acessibilidade-menu" id="acessibilidadeMenu">
+            <button class="acess-btn" id="aumentarFonte" aria-label="Aumentar fonte">
+                <i class="fas fa-text-height"></i> Aumentar fonte
+            </button>
+            <button class="acess-btn" id="diminuirFonte" aria-label="Diminuir fonte">
+                <i class="fas fa-text-height"></i> Diminuir fonte
+            </button>
+            <button class="acess-btn" id="altoContraste" aria-label="Alto contraste">
+                <i class="fas fa-adjust"></i> Alto contraste
+            </button>
+        </div>
+    </div>
+
+    <header class="topo">
+        <div class="container flex-between">
+            <div class="logo-area">
+                <i class="fas fa-hands-helping icone-logo"></i>
+                <h1>Amigo Ajuda</h1>
+            </div>
+            <nav class="nav-rapida">
+                <a href="#inicio" class="botao-nav"><i class="fas fa-home"></i> Início</a>
+                <a href="#ajuda" class="botao-nav"><i class="fas fa-life-ring"></i> Ajuda</a>
+                <a href="#atividades" class="botao-nav"><i class="fas fa-gamepad"></i> Atividades</a>
+                <a href="#jogo" class="botao-nav"><i class="fas fa-smile"></i> Jogo das Emoções</a>
+            </nav>
+        </div>
+    </header>
+
+    <main id="inicio">
+        <!-- HERO -->
+        <section class="hero">
+            <div class="container">
+                <div class="hero-texto">
+                    <span class="etiqueta"><i class="fas fa-smile-beam"></i> Olá, amigo!</span>
+                    <h2>Você está num lugar seguro e colorido</h2>
+                    <p class="subtitulo"><i class="fas fa-arrow-right"></i> Todos os botões funcionam e te levam a algo legal. Clique à vontade!</p>
+                    <div class="botoes-hero">
+                        <a href="#atividades" class="botao-grande botao-verde"><i class="fas fa-puzzle-piece"></i> Quero me divertir</a>
+                        <a href="#ajuda" class="botao-grande botao-laranja"><i class="fas fa-info-circle"></i> Preciso de ajuda</a>
+                    </div>
+                </div>
+                <div class="hero-imagem">
+                    <i class="fas fa-smile-wink emoji-gigante"></i>
+                </div>
+            </div>
+        </section>
+
+        <!-- CENTRAL DE AJUDA -->
+        <section class="central-ajuda" id="ajuda">
+            <div class="container">
+                <h2 class="titulo-secao"><i class="fas fa-hands"></i> Centro de Ajuda</h2>
+                <div class="cartoes-ajuda">
+                    <div class="cartao-ajuda">
+                        <i class="fas fa-map-signs"></i>
+                        <h3>Guia rápido</h3>
+                        <p>Clique nos botões coloridos. Tudo tem explicação.</p>
+                        <a href="guia.html" class="botao-funcional"><i class="fas fa-book-open"></i> Ver guia</a>
+                    </div>
+                    <div class="cartao-ajuda">
+                        <i class="fas fa-phone-volume"></i>
+                        <h3>Ligar para um amigo</h3>
+                        <p>Fale com alguém que ajuda.</p>
+                        <a href="ligar.html" class="botao-funcional"><i class="fas fa-phone"></i> Ligar agora</a>
+                    </div>
+                </div>
+                <div class="painel-mensagem" id="painelMsg">
+                    <i class="fas fa-smile"></i> Clique em qualquer botão que eu te ajudo!
+                </div>
+            </div>
+        </section>
+
+        <!-- ATIVIDADES -->
+        <section class="oficinas" id="atividades">
+            <div class="container">
+                <h2 class="titulo-secao"><i class="fas fa-star"></i> Atividades para você</h2>
+                <div class="grade-oficinas">
+                    <div class="oficina-card">
+                        <i class="fas fa-paint-brush"></i>
+                        <h3>Pintura</h3>
+                        <div class="desc">Escolha cores e pinte desenhos legais.</div>
+                        <a href="pintura.html" class="botao-funcional"><i class="fas fa-palette"></i> Começar</a>
+                    </div>
+                    <div class="oficina-card">
+                        <i class="fas fa-music"></i>
+                        <h3>Música calma</h3>
+                        <div class="desc">Ouça músicas para relaxar.</div>
+                        <a href="musica.html" class="botao-funcional"><i class="fas fa-headphones"></i> Ouvir</a>
+                    </div>
+                    <div class="oficina-card">
+                        <i class="fas fa-puzzle-piece"></i>
+                        <h3>Jogo da memória</h3>
+                        <div class="desc">Divirta-se e exercite a mente.</div>
+                        <a href="memoria.html" class="botao-funcional"><i class="fas fa-brain"></i> Jogar</a>
+                    </div>
+                    <div class="oficina-card">
+                        <i class="fas fa-deaf"></i>
+                        <h3>Deficiência Auditiva</h3>
+                        <div class="desc">Aprenda sobre Libras e inclusão auditiva.</div>
+                        <a href="auditiva.html" class="botao-funcional"><i class="fas fa-hand-paper"></i> Explorar</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- JOGO DAS EMOÇÕES (MELHORADO) -->
+        <section class="jogo-emocoes" id="jogo">
+            <div class="container">
+                <h2 class="titulo-secao"><i class="fas fa-smile"></i> Jogo das Emoções</h2>
+                <div class="jogo-container">
+                    <div class="jogo-card">
+                        <i class="fas fa-brain"></i>
+                        <h3>Como você se sentiria?</h3>
+                        <p>Aprenda a reconhecer suas emoções de forma divertida!</p>
+                        <a href="joguinho.html" class="botao-grande botao-verde" style="font-size:1.5rem; padding:1rem 2rem;">
+                            <i class="fas fa-play"></i> Jogar agora
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="rodape">
+        <div class="container">
+            <div class="rodape-conteudo">
+                <div class="rodape-mensagem">
+                    <i class="fas fa-heart"></i>
+                    <p>Você é especial e está no caminho certo! Cada pequeno passo é uma grande conquista.</p>
+                </div>
+                <div class="rodape-dicas">
+                    <i class="fas fa-lightbulb"></i>
+                    <span>Dica do dia: Respire fundo, conte até 3 e sorria! Você consegue!</span>
+                </div>
+                <div class="rodape-copyright">
+                    <p>Com carinho, Amigo Ajuda · Você nunca está sozinho 💙</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Atividades Extras · Amigo Ajuda</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Quicksand', sans-serif;
+            background: linear-gradient(135deg, #f0f9ff, #6A4E9B);
+            color: #1e3d58;
+        }
+        .container { max-width: 1000px; margin: 0 auto; padding: 2rem; }
+        .topo {
+            background: #F8B042;
+            padding: 1rem;
+            border-bottom: 8px solid #F45D4C;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+        .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            background: #057E8C;
+            padding: 0.5rem 2rem;
+            border-radius: 60px;
+            border: 4px solid #FFE55C;
+        }
+        .logo-area h1 { color: white; font-size: 1.8rem; }
+        .botao-voltar {
+            background: #F45D4C;
+            padding: 0.8rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            color: white;
+            font-weight: bold;
+            border: 4px solid #FFE55C;
+        }
+        .secao {
+            background: #FFE55C;
+            border-radius: 60px;
+            padding: 2rem;
+            margin: 2rem 0;
+            border: 6px solid #6A4E9B;
+        }
+        .respiracao-area {
+            text-align: center;
+        }
+        .circulo-respiracao {
+            width: 200px;
+            height: 200px;
+            background: #057E8C;
+            border-radius: 50%;
+            margin: 2rem auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: 0.5s;
+        }
+        .quebra-cabeca {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 0.5rem;
+            max-width: 300px;
+            margin: 1rem auto;
+        }
+        .peca {
+            background: #F45D4C;
+            color: white;
+            padding: 1rem;
+            text-align: center;
+            border-radius: 20px;
+            cursor: pointer;
+        }
+        .mensagem-positiva {
+            background: #A7E0E0;
+            padding: 2rem;
+            border-radius: 40px;
+            text-align: center;
+            font-size: 1.5rem;
+            margin: 1rem 0;
+        }
+        footer {
+            background: #1e3d58;
+            color: white;
+            text-align: center;
+            padding: 1.5rem;
+            margin-top: 2rem;
+        }
+    </style>
+</head>
+<body>
+    <header class="topo">
+        <div class="logo-area">
+            <i class="fas fa-hand-sparkles" style="font-size: 2rem;"></i>
+            <h1>Atividades Extras</h1>
+        </div>
+        <a href="index.html" class="botao-voltar"><i class="fas fa-arrow-left"></i> Voltar</a>
+    </header>
+    
+    <div class="container">
+        <!-- Respiração Guiada -->
+        <div class="secao" id="respiração">
+            <h2><i class="fas fa-lungs"></i> Respiração Guiada</h2>
+            <div class="respiracao-area">
+                <p>Clique no círculo e respire junto com ele:</p>
+                <div class="circulo-respiracao" id="circuloResp">
+                    Inspire
+                </div>
+                <p>Inspire quando aumentar, expire quando diminuir</p>
+            </div>
+        </div>
+        
+        <!-- Quebra-cabeça Simples -->
+        <div class="secao" id="quebra-cabeca">
+            <h2><i class="fas fa-puzzle-piece"></i> Quebra-cabeça das Cores</h2>
+            <p>Clique nas peças para organizar as cores do arco-íris:</p>
+            <div class="quebra-cabeca" id="quebraCabeca"></div>
+            <div id="msgQuebra" style="text-align: center; margin-top: 1rem;"></div>
+        </div>
+        
+        <!-- Mensagens Positivas -->
+        <div class="secao" id="mensagens">
+            <h2><i class="fas fa-leaf"></i> Mensagens Positivas</h2>
+            <div class="mensagem-positiva" id="mensagemPositiva">
+                Clique no botão para receber uma mensagem especial!
+            </div>
+            <button onclick="novaMensagem()" style="background: #F45D4C; color: white; padding: 0.8rem 2rem; border-radius: 50px; border: none; cursor: pointer;">Nova mensagem</button>
+        </div>
+    </div>
+    
+    <script>
+        // Respiração guiada
+        let expandindo = true;
+        let tamanho = 200;
+        const circulo = document.getElementById('circuloResp');
+        
+        function animarRespiração() {
+            if (expandindo) {
+                tamanho += 2;
+                if (tamanho >= 280) {
+                    expandindo = false;
+                    circulo.innerHTML = "Expire";
+                }
+            } else {
+                tamanho -= 2;
+                if (tamanho <= 200) {
+                    expandindo = true;
+                    circulo.innerHTML = "Inspire";
+                }
+            }
+            circulo.style.width = tamanho + 'px';
+            circulo.style.height = tamanho + 'px';
+            requestAnimationFrame(animarRespiração);
+        }
+        
+        circulo.onclick = () => {
+            if (!animando) {
+                animando = true;
+                animarRespiração();
+            }
+        };
+        let animando = false;
+        
+        // Quebra-cabeça
+        const cores = ["🔴 Vermelho", "🟠 Laranja", "🟡 Amarelo", "🟢 Verde", "🔵 Azul", "🟣 Roxo"];
+        let coresEmbaralhadas = [...cores];
+        
+        function embaralhar(array) {
+            for (let i = array.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [array[i], array[j]] = [array[j], array[i]];
+            }
+            return array;
+        }
+        
+        function renderizarQuebraCabeca() {
+            const container = document.getElementById('quebraCabeca');
+            container.innerHTML = '';
+            coresEmbaralhadas.forEach((cor, index) => {
+                const div = document.createElement('div');
+                div.className = 'peca';
+                div.innerHTML = cor;
+                div.onclick = () => moverPeca(index);
+                container.appendChild(div);
+            });
+        }
+        
+        function moverPeca(index) {
+            if (index > 0) {
+                [coresEmbaralhadas[index], coresEmbaralhadas[index - 1]] = [coresEmbaralhadas[index - 1], coresEmbaralhadas[index]];
+                renderizarQuebraCabeca();
+                verificarVitoria();
+            }
+        }
+        
+        function verificarVitoria() {
+            let acertou = true;
+            for (let i = 0; i < cores.length; i++) {
+                if (coresEmbaralhadas[i] !== cores[i]) {
+                    acertou = false;
+                    break;
+                }
+            }
+            const msg = document.getElementById('msgQuebra');
+            if (acertou) {
+                msg.innerHTML = "🎉 Parabéns! Você montou o arco-íris! 🎉";
+                msg.style.color = "green";
+            } else {
+                msg.innerHTML = "Continue tentando! Organize as cores do arco-íris.";
+                msg.style.color = "#1e3d58";
+            }
+        }
+        
+        coresEmbaralhadas = embaralhar([...cores]);
+        renderizarQuebraCabeca();
+        
+        // Mensagens positivas
+        const mensagens = [
+            "🌟 Você é especial do jeito que é!",
+            "💪 Cada pequeno passo é uma grande conquista!",
+            "🌻 Você é capaz de coisas incríveis!",
+            "❤️ Você é amado e importante!",
+            "🌈 Sorrir faz bem para o coração!",
+            "🦋 Acredite em você! Você consegue!"
+        ];
+        
+        function novaMensagem() {
+            const random = Math.floor(Math.random() * mensagens.length);
+            document.getElementById('mensagemPositiva').innerHTML = mensagens[random];
+        }
+    </script>
+    
+    <footer>
+        <p>💙 Respire, brinque e se sinta bem. Você merece!</p>
+    </footer>
+</body>
+</html>
