@@ -1,138 +1,163 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Inclusão Motora</title>
-    <link rel="icon" href="favicon.svg" type="image/svg+xml" />
-    <!-- Ícone pode ser um ícone de cadeira de rodas ou ícone de movimento + acessibilidade -->
+    <title>Inclusão Motora | Movimento é Direito</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css" />
 </head>
-
 <body>
 
-    <!-- Header principal (hero + nav) -->
     <header class="page-header">
-        <!-- NAVBAR com transparência -->
         <nav class="navbar">
-            <a href="#" class="logo">Inclusão Motora</a>
-            <div class="nav-links">
-                <a href="#sobre">Sobre</a>
-                <a href="#causas">Causas</a>
-                <a href="#acessibilidade">Acessibilidade</a>
+            <div class="container nav-container">
+                <a href="#" class="logo">Inclusão<span>Motora</span></a>
+                <div class="nav-links">
+                    <a href="#sobre">Sobre</a>
+                    <a href="#causas">Causas</a>
+                    <a href="#acessibilidade">Acessibilidade</a>
+                    <a href="#contato" class="nav-cta">Apoiar Causa</a>
+                </div>
             </div>
         </nav>
 
-        <!-- Hero com fundo mais moderno -->
         <section class="hero">
-            <div class="hero-content">
-                <span class="tag">Movimento, direito e tecnologia</span>
-                <h1>Inclusão Motora</h1>
-                <p>
-                    Um projeto que pensa mobilidade a partir da pessoa, não da escada.<br>
-                    Acessibilidade como infraestrutura, não como favor.
-                </p>
-                <a href="#causas" class="btn btn-primary">Conheça as ações</a>
-            </div>
-
-            <!-- Visual mais simbólico (pode virar SVG depois) -->
-            <div class="hero-visual">
-                <div class="stick-figure" aria-hidden="true">
-                    🚶‍♂️↕️♿
+            <div class="hero-shape"></div>
+            <div class="container hero-grid">
+                <div class="hero-content">
+                    <span class="tag-floating">Acessibilidade é Liberdade</span>
+                    <h1>Desenvolvendo um mundo sem <span>barreiras</span>.</h1>
+                    <p>
+                        Não adaptamos o mundo para poucos; redesenhamos o futuro para todos. 
+                        A mobilidade reduzida não é um limite, o ambiente é que precisa evoluir.
+                    </p>
+                    <div class="hero-btns">
+                        <a href="#causas" class="btn btn-primary">Ver Nossas Ações</a>
+                        <a href="#sobre" class="btn btn-secondary">Saiba Mais</a>
+                    </div>
+                </div>
+                <div class="hero-visual">
+                    <div class="experience-card">
+                        <div class="user-info">
+                            <div class="avatar"></div>
+                            <div>
+                                <strong>Ana Silva</strong>
+                                <span>Usuária de Tecnologia Assistiva</span>
+                            </div>
+                        </div>
+                        <p>"A tecnologia me deu a autonomia que a arquitetura urbana me negou."</p>
+                    </div>
                 </div>
             </div>
         </section>
     </header>
 
-    <!-- MAIN: conteúdo principal -->
     <main>
-        <!-- Seção SOBRE mais narrativa -->
         <section id="sobre" class="section section-sobre">
             <div class="container">
-                <h2>Por que deficiência motora importa agora?</h2>
-                <p>
-                    Deficiência motora não é só uma palavra em laudo; é a forma como milhões de pessoas vivem o dia a
-                    dia,
-                    lidando com rampas que faltam, sinalização confusa e interfaces que não se adaptam.
-                </p>
-                <p>
-                    A inclusão motora é construída em três pilares: direito de ir e vir, acesso à tecnologia e respeito
-                    à
-                    autonomia. Não é “ajuda”, é justiça.
-                </p>
+                <div class="section-header">
+                    <span class="subtitle">Nossa Missão</span>
+                    <h2>A inclusão motora é construída em três pilares.</h2>
+                </div>
+                <div class="features-grid">
+                    <div class="feature-item">
+                        <div class="icon">⚖️</div>
+                        <h4>Direito de Ir e Vir</h4>
+                        <p>A mobilidade urbana deve ser garantida por lei e infraestrutura física impecável.</p>
+                    </div>
+                    <div class="feature-item">
+                        <div class="icon">💻</div>
+                        <h4>Tecnologia Assistiva</h4>
+                        <p>Interfaces que se adaptam ao usuário, e não o contrário. Software para todos.</p>
+                    </div>
+                    <div class="feature-item">
+                        <div class="icon">🤝</div>
+                        <h4>Respeito à Autonomia</h4>
+                        <p>Promover a independência da pessoa com deficiência em todas as esferas da vida.</p>
+                    </div>
+                </div>
             </div>
         </section>
 
-        <!-- Seção CAUSAS em cards com visual moderno -->
         <section id="causas" class="section section-causas">
             <div class="container">
-                <h2 class="section-title">Causas da deficiência motora</h2>
-                <div class="cards-grid">
+                <div class="section-header center">
+                    <span class="subtitle">Contexto</span>
+                    <h2>Entendendo as Origens</h2>
+                </div>
+                <article class="card">
+                    <div class="card-icon">🧠</div>
+                    <span class="card-label">Neurológica</span>
+                    <h3>Sistema Nervoso</h3>
+                    <p>Paralisia cerebral, sequelas de AVC e condições que afetam o comando central do movimento.</p>
+                    
+                    <div class="card-footer">
+                        <a href="nervoso.html" class="card-link">Saiba mais →</a>
+                    </div>
+                </article>
                     <article class="card">
-                        <span class="card-label">🧠 Neurológica</span>
-                        <h3>Lesões cerebrais e sistema nervoso</h3>
-                        <p>Paralisia cerebral, sequelas de AVC, traumas cranianos e condições degenerativas que afetam
-                            controle
-                            motor e coordenação.</p>
+                        <div class="card-icon">🦴</div>
+                        <span class="card-label">Física</span>
+                        <h3>Estrutura </h3>
+                        <p>Amputações, deformidades e sequelas de acidentes que impactam a locomoção física direta.</p>
+                        <div class="card-footer">
+                            <a href="estrutura.html" class="card-link">Saiba mais →</a>
+                        </div>
                     </article>
                     <article class="card">
-                        <span class="card-label">🦴 Física</span>
-                        <h3>Estrutura óssea e postural</h3>
-                        <p>Amputações, deformidades congênitas, sequelas de acidentes e fraturas que limitam locomoção e
-                            equilíbrio.</p>
-                    </article>
-                    <article class="card">
-                        <span class="card-label">💪 Muscular</span>
-                        <h3>Fraqueza e fadiga</h3>
-                        <p>Distrofias musculares, doenças neuromusculares e condições que reduzem força, resistência e
-                            coordenação.</p>
+                        <div class="card-icon">💪</div>
+                        <span class="card-label">Muscular</span>
+                        <h3>Força e Fadiga</h3>
+                        <p>Distrofias e doenças neuromusculares que reduzem a resistência e a coordenação motora.</p>
+                        <div class="card-footer">
+                            <a href="musuclar.html" class="card-link">Saiba mais →</a>
+                        </div>
                     </article>
                 </div>
             </div>
         </section>
 
-        <!-- Seção ACESSIBILIDADE com foco em soluções -->
-        <section id="acessibilidade" class="section section-acessibilidade">
+        <section id="acessibilidade" class="section section-acessibilidade-v2">
             <div class="container">
-                <h2>Acessibilidade é infraestrutura social</h2>
-                <p>
-                    Rampas, elevadores, banheiros adaptados, alavancas ergonômicas e tecnologia assistiva não são
-                    “luxo”.
-                    São parte mínima da infraestrutura para uma sociedade que não trata mobilidade reduzida como um
-                    problema,
-                    mas como variação humana.
-                </p>
-                <p>
-                    Plataformas digitais com navegação por teclado, alto contraste e comandos de voz são complementares:
-                    quem não consegue usar o mouse precisa de websites que funcionem com o que elas têm, não com o que o
-                    dev
-                    imaginou.
-                </p>
-
-                <!-- Lista de boas práticas de acessibilidade (ex.: WCAG AA) -->
-                <ul class="checklist">
-                    <li>Navegação por teclado completa</li>
-                    <li>Alto contraste mínimo WCAG AA</li>
-                    <li>Textos alternativos em imagens</li>
-                    <li>Conteúdo semântico (HTML5)</li>
-                </ul>
+                <div class="glass-box">
+                    <div class="glass-content">
+                        <h2>Acessibilidade é <br><span>Infraestrutura Social</span></h2>
+                        <p>Quem não consegue usar o mouse precisa de websites que funcionem com o que elas têm, não com o que o desenvolvedor imaginou.</p>
+                        <ul class="checklist-v2">
+                            <li>Navegação por teclado completa e lógica</li>
+                            <li>Alto contraste mínimo WCAG AA</li>
+                            <li>Conteúdo semântico para leitores de tela</li>
+                        </ul>
+                    </div>
+                    <div class="glass-image">
+                        <div class="stats-badge">99% Acessível</div>
+                    </div>
+                </div>
             </div>
         </section>
     </main>
 
-    <!-- FOOTER mais “produto” + acessibilidade -->
     <footer class="footer">
         <div class="container">
-            <p>© 2026 Inclusão Motora • Projeto de tecnologia, direitos humanos e design inclusivo.</p>
-            <div class="footer-links">
-                <a href="#">Sobre o projeto</a>
-                <a href="#">Como utilizar</a>
-                <a href="#">Acessibilidade AA (WCAG)</a>
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="#" class="logo">Inclusão<span>Motora</span></a>
+                    <p>Redesenhando o futuro da mobilidade e tecnologia assistiva.</p>
+                </div>
+                <div class="footer-nav">
+                    <h4>Links</h4>
+                    <a href="#">Sobre o projeto</a>
+                    <a href="#">Como utilizar</a>
+                    <a href="#">Acessibilidade AA</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2026 Inclusão Motora. Feito com foco em humanos.</p>
             </div>
         </div>
     </footer>
-
 </body>
-
 </html>
