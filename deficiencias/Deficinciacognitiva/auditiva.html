@@ -8,6 +8,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
@@ -361,6 +362,24 @@
 </head>
 <body>
 
+    <!-- MENU DE ACESSIBILIDADE FLUTUANTE (FECHADO) -->
+    <div class="acessibilidade-container">
+        <button class="acess-toggle" id="toggleAcessibilidade" aria-label="Abrir menu de acessibilidade">
+            <i class="fas fa-universal-access"></i> Acessibilidade
+        </button>
+        <div class="acessibilidade-menu" id="acessibilidadeMenu">
+            <button class="acess-btn" id="aumentarFonte" aria-label="Aumentar fonte">
+                <i class="fas fa-text-height"></i> Aumentar fonte
+            </button>
+            <button class="acess-btn" id="diminuirFonte" aria-label="Diminuir fonte">
+                <i class="fas fa-text-height"></i> Diminuir fonte
+            </button>
+            <button class="acess-btn" id="altoContraste" aria-label="Alto contraste">
+                <i class="fas fa-adjust"></i> Alto contraste
+            </button>
+        </div>
+    </div>
+
     <header class="topo">
         <div class="logo-area">
             <i class="fas fa-deaf" style="font-size: 2rem; color: #FFE55C;"></i>
@@ -544,6 +563,7 @@
         <p>💙 Amigo Ajuda · Incluir é amar. Aprender é respeitar.</p>
     </footer>
 
+    <script src="script.js"></script>
     <script>
         // ===== JOGO: DECODIFIQUE A MENSAGEM =====
         const rodadas = [

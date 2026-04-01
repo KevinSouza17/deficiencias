@@ -102,28 +102,100 @@ body {
     color: white;
 }
 
-/* Alto contraste */
+/* Alto contraste - Padronizado (Preto e Amarelo) */
 body.alto-contraste {
-    background-color: black;
-    color: yellow;
-}
-
-body.alto-contraste a,
-body.alto-contraste button,
-body.alto-contraste .botao-funcional,
-body.alto-contraste .acess-btn {
-    background-color: yellow !important;
-    color: black !important;
-    border-color: white !important;
-}
-
-body.alto-contraste .cartao-ajuda,
-body.alto-contraste .oficina-card,
-body.alto-contraste .jogo-card {
     background-color: black !important;
-    border-color: yellow !important;
-    color: yellow !important;
+    color: #ffff00 !important;
 }
+
+/* Regra geral: fundo preto e bordas amarelas para quase tudo */
+body.alto-contraste *:not(.cor-btn):not(canvas) {
+    background-color: black !important;
+    color: #ffff00 !important;
+    border-color: #ffff00 !important;
+    text-shadow: none !important;
+    box-shadow: none !important;
+}
+
+
+body.alto-contraste,
+body.alto-contraste main,
+body.alto-contraste section,
+body.alto-contraste .container,
+body.alto-contraste .container-pintura,
+body.alto-contraste div,
+body.alto-contraste header,
+body.alto-contraste footer,
+body.alto-contraste .topo-pintura,
+body.alto-contraste .topo,
+body.alto-contraste .logo-area,
+body.alto-contraste .area-pintura,
+body.alto-contraste .ferramentas,
+body.alto-contraste .canvas-wrapper,
+body.alto-contraste .controle-tamanho,
+body.alto-contraste .dica,
+body.alto-contraste .secao,
+body.alto-contraste .hero-pagina,
+body.alto-contraste .card-tipo,
+body.alto-contraste .braille-card,
+body.alto-contraste .quiz-area {
+    background: black !important;
+    background-color: black !important;
+    border-color: #ffff00 !important;
+    color: #ffff00 !important;
+}
+
+/* Garante que todos os textos sejam amarelos */
+body.alto-contraste h1,
+body.alto-contraste h2,
+body.alto-contraste h3,
+body.alto-contraste p,
+body.alto-contraste span,
+body.alto-contraste li,
+body.alto-contraste i,
+body.alto-contraste label,
+body.alto-contraste strong,
+body.alto-contraste b,
+body.alto-contraste u,
+body.alto-contraste em,
+body.alto-contraste input {
+    color: #ffff00 !important;
+}
+
+/* Botões e links ficam amarelos com texto preto para destaque */
+body.alto-contraste a,
+body.alto-contraste button:not(.cor-btn) {
+    background: #ffff00 !important;
+    background-color: #ffff00 !important;
+    color: black !important;
+    border: 2px solid white !important;
+}
+
+body.alto-contraste a:hover,
+body.alto-contraste button:not(.cor-btn):hover {
+    background: white !important;
+    background-color: white !important;
+    color: black !important;
+}
+
+/* EXCEÇÕES PARA O CANVA E PINTURA */
+body.alto-contraste canvas {
+    background-color: white !important;
+    filter: none !important;
+}
+
+/* Os botões de cores (pincéis) DEVEM manter suas cores originais do pincel */
+body.alto-contraste .cor-btn {
+    border: 4px solid white !important;
+    /* Removemos qualquer override de background-color para deixar o style="..." do HTML funcionar */
+}
+
+body.alto-contraste .cor-btn.ativa {
+    border-color: #ffff00 !important;
+    transform: scale(1.1);
+}
+
+
 
 /* Aumento de fonte */
 body.fonte-grande {

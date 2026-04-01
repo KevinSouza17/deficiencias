@@ -1,6 +1,19 @@
 // ===== MENU DE ACESSIBILIDADE (FECHADO/ABRIR AO CLICAR) =====
-let fontSizeLevel = 0;
+let fontSizeLevel = parseInt(localStorage.getItem('fontSizeLevel')) || 0;
 const body = document.body;
+
+// Inicializar estado salvo
+document.addEventListener('DOMContentLoaded', () => {
+    if (localStorage.getItem('altoContraste') === 'true') {
+        body.classList.add('alto-contraste');
+    }
+    if (fontSizeLevel > 0) {
+        atualizarFonte(false); // false para não fechar o menu na inicialização
+    }
+    
+    console.log('Site Amigo Ajuda carregado com sucesso!');
+    mostrarMensagem('✨ Bem-vindo! Clique no botão "Acessibilidade" no canto inferior direito para ajustar o site.');
+});
 
 // Controle do menu
 const toggleBtn = document.getElementById('toggleAcessibilidade');
@@ -27,40 +40,51 @@ document.addEventListener('click', (e) => {
 document.getElementById('aumentarFonte')?.addEventListener('click', () => {
     if (fontSizeLevel < 3) {
         fontSizeLevel++;
-        body.classList.add('fonte-grande');
-        if (fontSizeLevel === 1) body.style.fontSize = '1.4rem';
-        if (fontSizeLevel === 2) body.style.fontSize = '1.6rem';
-        if (fontSizeLevel === 3) body.style.fontSize = '1.8rem';
+        localStorage.setItem('fontSizeLevel', fontSizeLevel);
+        atualizarFonte();
         mostrarMensagem('🔍 Fonte aumentada!');
     } else {
         mostrarMensagem('🔍 Fonte já está no tamanho máximo!');
     }
-    acessMenu?.classList.remove('aberto');
-    if (toggleBtn) toggleBtn.innerHTML = '<i class="fas fa-universal-access"></i> Acessibilidade';
 });
 
 // Diminuir fonte
 document.getElementById('diminuirFonte')?.addEventListener('click', () => {
     if (fontSizeLevel > 0) {
         fontSizeLevel--;
-        if (fontSizeLevel === 0) {
-            body.classList.remove('fonte-grande');
-            body.style.fontSize = '';
-        }
-        if (fontSizeLevel === 1) body.style.fontSize = '1.4rem';
-        if (fontSizeLevel === 2) body.style.fontSize = '1.6rem';
+        localStorage.setItem('fontSizeLevel', fontSizeLevel);
+        atualizarFonte();
         mostrarMensagem('🔍 Fonte diminuída!');
     } else {
         mostrarMensagem('🔍 Fonte já está no tamanho padrão!');
     }
-    acessMenu?.classList.remove('aberto');
-    if (toggleBtn) toggleBtn.innerHTML = '<i class="fas fa-universal-access"></i> Acessibilidade';
 });
+
+function atualizarFonte(fecharMenu = true) {
+    const root = document.documentElement;
+    if (fontSizeLevel === 0) {
+        root.style.fontSize = ''; 
+        body.classList.remove('fonte-grande');
+    } else {
+        body.classList.add('fonte-grande');
+        if (fontSizeLevel === 1) root.style.fontSize = '18px';
+        if (fontSizeLevel === 2) root.style.fontSize = '20px';
+        if (fontSizeLevel === 3) root.style.fontSize = '22px';
+    }
+    
+    if (fecharMenu) {
+        acessMenu?.classList.remove('aberto');
+        if (toggleBtn) toggleBtn.innerHTML = '<i class="fas fa-universal-access"></i> Acessibilidade';
+    }
+}
 
 // Alto contraste
 document.getElementById('altoContraste')?.addEventListener('click', () => {
     body.classList.toggle('alto-contraste');
-    if (body.classList.contains('alto-contraste')) {
+    const isAtivado = body.classList.contains('alto-contraste');
+    localStorage.setItem('altoContraste', isAtivado);
+    
+    if (isAtivado) {
         mostrarMensagem('🎨 Alto contraste ativado!');
     } else {
         mostrarMensagem('🎨 Alto contraste desativado!');
@@ -112,9 +136,3 @@ window.mostrarModal = function(tipo) {
     
     mostrarMensagem(mensagem);
 };
-
-// ===== INICIALIZAÇÃO =====
-document.addEventListener('DOMContentLoaded', () => {
-    console.log('Site Amigo Ajuda carregado com sucesso!');
-    mostrarMensagem('✨ Bem-vindo! Clique no botão "Acessibilidade" no canto inferior direito para ajustar o site.');
-});
