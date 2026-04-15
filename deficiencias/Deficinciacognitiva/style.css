@@ -102,6 +102,15 @@ body {
     color: white;
 }
 
+/* TalkBack ativo — botão em teal */
+.acess-btn[aria-pressed="true"] {
+    background: #057E8C;
+    color: white;
+}
+.acess-btn[aria-pressed="true"]:hover {
+    background: #046a78;
+}
+
 /* Alto contraste - Padronizado (Preto e Amarelo) */
 body.alto-contraste {
     background-color: black !important;

@@ -1,3 +1,54 @@
+// ===== TALKBACK — LEITURA EM VOZ ALTA =====
+let talkbackAtivo = localStorage.getItem('talkback') === 'true';
+
+function falar(texto) {
+    if (!talkbackAtivo) return;
+    window.speechSynthesis.cancel();
+    const utter = new SpeechSynthesisUtterance(texto);
+    utter.lang = 'pt-BR';
+    utter.rate = 0.95;
+    utter.pitch = 1.05;
+    window.speechSynthesis.speak(utter);
+}
+
+function atualizarTalkbackUI() {
+    const btn = document.getElementById('talkback');
+    const label = document.getElementById('talkbackLabel');
+    if (!btn || !label) return;
+    if (talkbackAtivo) {
+        label.textContent = 'Desligar voz';
+        btn.setAttribute('aria-pressed', 'true');
+        btn.style.background = '#057E8C';
+        btn.style.color = 'white';
+    } else {
+        label.textContent = 'Ligar voz';
+        btn.setAttribute('aria-pressed', 'false');
+        btn.style.background = '';
+        btn.style.color = '';
+    }
+}
+
+function ativarTalkbackNaPagina() {
+    document.querySelectorAll(
+        'button, a, h1, h2, h3, p, label, .painel-mensagem, .etiqueta, .subtitulo, .desc'
+    ).forEach(el => {
+        if (el.dataset.talkbound) return;
+        el.dataset.talkbound = '1';
+        el.addEventListener('mouseenter', () => {
+            const t = el.getAttribute('aria-label') ||
+                      el.getAttribute('title') ||
+                      el.textContent.trim();
+            if (t) falar(t.slice(0, 200));
+        });
+        el.addEventListener('focus', () => {
+            const t = el.getAttribute('aria-label') ||
+                      el.getAttribute('title') ||
+                      el.textContent.trim();
+            if (t) falar(t.slice(0, 200));
+        });
+    });
+}
+
 // ===== MENU DE ACESSIBILIDADE (FECHADO/ABRIR AO CLICAR) =====
 let fontSizeLevel = parseInt(localStorage.getItem('fontSizeLevel')) || 0;
 const body = document.body;
@@ -8,9 +59,28 @@ document.addEventListener('DOMContentLoaded', () => {
         body.classList.add('alto-contraste');
     }
     if (fontSizeLevel > 0) {
-        atualizarFonte(false); // false para não fechar o menu na inicialização
+        atualizarFonte(false);
     }
-    
+
+    // Inicializar TalkBack
+    atualizarTalkbackUI();
+    if (talkbackAtivo) ativarTalkbackNaPagina();
+
+    // Botão TalkBack
+    document.getElementById('talkback')?.addEventListener('click', () => {
+        talkbackAtivo = !talkbackAtivo;
+        localStorage.setItem('talkback', talkbackAtivo);
+        atualizarTalkbackUI();
+        if (talkbackAtivo) {
+            ativarTalkbackNaPagina();
+            mostrarMensagem('🔊 Leitura em voz alta ligada! Passe o mouse sobre qualquer texto.');
+            falar('Leitura em voz alta ligada. Passe o mouse sobre qualquer elemento para ouvir.');
+        } else {
+            window.speechSynthesis.cancel();
+            mostrarMensagem('🔇 Leitura em voz alta desligada.');
+        }
+    });
+
     console.log('Site Amigo Ajuda carregado com sucesso!');
     mostrarMensagem('✨ Bem-vindo! Clique no botão "Acessibilidade" no canto inferior direito para ajustar o site.');
 });
