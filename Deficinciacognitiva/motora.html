@@ -1,0 +1,682 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Deficiência Motora · Amigo Ajuda</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Quicksand', sans-serif;
+            background: linear-gradient(135deg, #f0f9ff, #A7E0E0);
+            color: #1e3d58;
+        }
+
+        .container { max-width: 1000px; margin: 0 auto; padding: 2rem; }
+
+        /* TOPO */
+        .topo {
+            background: #057E8C;
+            padding: 1rem;
+            border-bottom: 8px solid #F8B042;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+        .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            background: #F45D4C;
+            padding: 0.5rem 2rem;
+            border-radius: 60px;
+            border: 4px solid #FFE55C;
+        }
+        .logo-area h1 { color: white; font-size: 1.8rem; }
+        .botao-voltar {
+            background: #F8B042;
+            padding: 0.8rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            color: #1e3d58;
+            font-weight: bold;
+            border: 4px solid #057E8C;
+            font-size: 1.1rem;
+        }
+        .botao-voltar:hover { background: #FFE55C; transform: scale(1.05); transition: 0.2s; }
+
+        /* HERO BANNER */
+        .hero-pagina {
+            background: #FFE55C;
+            border-bottom: 10px solid #F45D4C;
+            padding: 2.5rem 0;
+            text-align: center;
+        }
+        .hero-pagina h2 {
+            font-size: 3rem;
+            color: #057E8C;
+            text-shadow: 4px 4px 0 #F8B042;
+            margin-bottom: 0.5rem;
+        }
+        .hero-pagina p {
+            font-size: 1.5rem;
+            background: #A7E0E0;
+            display: inline-block;
+            padding: 0.8rem 2rem;
+            border-radius: 60px;
+            border: 4px solid #6A4E9B;
+            margin-top: 1rem;
+        }
+        .icone-hero {
+            font-size: 7rem;
+            color: #F45D4C;
+            filter: drop-shadow(6px 6px 0 #057E8C);
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        /* CARDS GERAIS */
+        .card {
+            background: #FFE55C;
+            border-radius: 60px;
+            padding: 2rem 2.5rem;
+            margin: 2rem 0;
+            border: 6px solid #6A4E9B;
+            box-shadow: 8px 8px 0 #057E8C;
+        }
+        .card h2 {
+            color: #057E8C;
+            font-size: 2rem;
+            margin-bottom: 1.2rem;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+        .card p {
+            font-size: 1.3rem;
+            line-height: 1.8;
+            margin-bottom: 0.8rem;
+        }
+
+        /* CARD VERDE */
+        .card-verde {
+            background: #A7E0E0;
+            border-color: #057E8C;
+            box-shadow: 8px 8px 0 #6A4E9B;
+        }
+        .card-verde h2 { color: #6A4E9B; }
+
+        /* CARD VERMELHO */
+        .card-vermelho {
+            background: #F45D4C;
+            border-color: #1e3d58;
+            box-shadow: 8px 8px 0 #F8B042;
+            color: white;
+        }
+        .card-vermelho h2 { color: #FFE55C; }
+        .card-vermelho p { color: white; }
+
+        /* GRID DE TIPOS */
+        .grid-tipos {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+        .card-tipo {
+            background: white;
+            border-radius: 40px;
+            padding: 1.5rem;
+            border: 5px solid #057E8C;
+            box-shadow: 6px 6px 0 #F8B042;
+            text-align: center;
+            transition: transform 0.2s;
+        }
+        .card-tipo:hover { transform: translateY(-6px); }
+        .card-tipo i {
+            font-size: 3.5rem;
+            color: #F45D4C;
+            background: #FFE55C;
+            padding: 1rem;
+            border-radius: 50%;
+            border: 4px solid #057E8C;
+            margin-bottom: 0.8rem;
+            display: inline-block;
+        }
+        .card-tipo h3 {
+            font-size: 1.5rem;
+            color: #057E8C;
+            margin-bottom: 0.5rem;
+        }
+        .card-tipo p {
+            font-size: 1.1rem;
+            color: #1e3d58;
+            background: #f0f9ff;
+            padding: 0.8rem;
+            border-radius: 20px;
+        }
+
+        /* LISTA DE DICAS */
+        .lista-dicas {
+            list-style: none;
+            margin-top: 1rem;
+        }
+        .lista-dicas li {
+            font-size: 1.25rem;
+            padding: 0.8rem 1rem;
+            background: white;
+            border-radius: 30px;
+            margin-bottom: 0.8rem;
+            border-left: 8px solid #F45D4C;
+            display: flex;
+            align-items: flex-start;
+            gap: 0.8rem;
+        }
+        .lista-dicas li i {
+            color: #F45D4C;
+            margin-top: 0.15rem;
+            flex-shrink: 0;
+        }
+
+        /* FATO CURIOSO */
+        .fato {
+            background: #6A4E9B;
+            color: white;
+            border-radius: 60px;
+            padding: 2rem;
+            margin: 2rem 0;
+            text-align: center;
+            border: 6px solid #FFE55C;
+            box-shadow: 8px 8px 0 #F45D4C;
+        }
+        .fato i { font-size: 3rem; color: #FFE55C; margin-bottom: 0.5rem; display: block; }
+        .fato p { font-size: 1.4rem; line-height: 1.7; }
+
+        /* QUIZ INTERATIVO */
+        .quiz-area {
+            background: #F8B042;
+            border-radius: 60px;
+            padding: 2rem;
+            margin: 2rem 0;
+            border: 6px solid #F45D4C;
+            box-shadow: 8px 8px 0 #6A4E9B;
+        }
+        .quiz-area h2 {
+            color: #1e3d58;
+            font-size: 2rem;
+            margin-bottom: 1.2rem;
+        }
+        .quiz-pergunta {
+            font-size: 1.4rem;
+            font-weight: bold;
+            margin-bottom: 1.2rem;
+            color: #1e3d58;
+        }
+        .quiz-opcoes {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+        .quiz-btn {
+            background: white;
+            border: 4px solid #057E8C;
+            border-radius: 40px;
+            padding: 1rem 1.5rem;
+            font-size: 1.2rem;
+            font-weight: bold;
+            cursor: pointer;
+            color: #1e3d58;
+            font-family: 'Quicksand', sans-serif;
+            transition: 0.2s;
+        }
+        .quiz-btn:hover { background: #A7E0E0; transform: scale(1.03); }
+        .quiz-btn.certa { background: #A7E0E0; border-color: #057E8C; }
+        .quiz-btn.errada { background: #F45D4C; color: white; border-color: #1e3d58; }
+        .quiz-feedback {
+            margin-top: 1.2rem;
+            font-size: 1.3rem;
+            font-weight: bold;
+            min-height: 2rem;
+            color: #1e3d58;
+        }
+        .btn-proximo {
+            margin-top: 1rem;
+            background: #057E8C;
+            color: white;
+            border: 4px solid #FFE55C;
+            border-radius: 40px;
+            padding: 0.8rem 2rem;
+            font-size: 1.2rem;
+            font-weight: bold;
+            cursor: pointer;
+            font-family: 'Quicksand', sans-serif;
+            display: none;
+            transition: 0.2s;
+        }
+        .btn-proximo:hover { background: #6A4E9B; transform: scale(1.05); }
+
+        /* TECNOLOGIAS ASSISTIVAS */
+        .grid-tec {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1.2rem;
+            margin-top: 1.2rem;
+        }
+        .tec-card {
+            background: #FFE55C;
+            border-radius: 40px;
+            padding: 1.2rem;
+            text-align: center;
+            border: 4px solid #6A4E9B;
+            box-shadow: 5px 5px 0 #F45D4C;
+            transition: transform 0.2s;
+        }
+        .tec-card:hover { transform: translateY(-5px); }
+        .tec-card i { font-size: 2.5rem; color: #6A4E9B; display: block; margin-bottom: 0.5rem; }
+        .tec-card h4 { font-size: 1.2rem; color: #057E8C; margin-bottom: 0.3rem; }
+        .tec-card p { font-size: 1rem; color: #1e3d58; }
+
+        /* MENSAGEM FINAL */
+        .mensagem-final {
+            background: #F45D4C;
+            color: white;
+            border-radius: 60px;
+            padding: 2.5rem;
+            text-align: center;
+            margin: 2rem 0;
+            border: 6px solid #FFE55C;
+        }
+        .mensagem-final i { font-size: 4rem; display: block; margin-bottom: 1rem; }
+        .mensagem-final p { font-size: 1.5rem; line-height: 1.8; }
+
+        footer {
+            background: #1e3d58;
+            color: white;
+            text-align: center;
+            padding: 1.5rem;
+            margin-top: 2rem;
+            font-size: 1.1rem;
+        }
+
+        @media (max-width: 600px) {
+            .hero-pagina h2 { font-size: 2rem; }
+            .quiz-opcoes { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- MENU DE ACESSIBILIDADE FLUTUANTE -->
+    <div class="acessibilidade-container">
+        <button class="acess-toggle" id="toggleAcessibilidade" aria-label="Abrir menu de acessibilidade">
+            <i class="fas fa-universal-access"></i> Acessibilidade
+        </button>
+        <div class="acessibilidade-menu" id="acessibilidadeMenu">
+            <button class="acess-btn" id="talkback" aria-label="Ativar leitura em voz alta" aria-pressed="false">
+                <i class="fas fa-volume-up"></i> <span id="talkbackLabel">Ligar voz</span>
+            </button>
+            <button class="acess-btn" id="aumentarFonte" aria-label="Aumentar fonte">
+                <i class="fas fa-text-height"></i> Aumentar fonte
+            </button>
+            <button class="acess-btn" id="diminuirFonte" aria-label="Diminuir fonte">
+                <i class="fas fa-text-height"></i> Diminuir fonte
+            </button>
+            <button class="acess-btn" id="altoContraste" aria-label="Alto contraste">
+                <i class="fas fa-adjust"></i> Alto contraste
+            </button>
+        </div>
+    </div>
+
+    <!-- CABEÇALHO -->
+    <header class="topo">
+        <div class="logo-area">
+            <i class="fas fa-wheelchair" style="font-size: 2rem; color: #FFE55C;"></i>
+            <h1>Deficiência Motora</h1>
+        </div>
+        <a href="index.html" class="botao-voltar"><i class="fas fa-arrow-left"></i> Voltar</a>
+    </header>
+
+    <!-- HERO -->
+    <section class="hero-pagina">
+        <div class="container">
+            <i class="fas fa-wheelchair icone-hero"></i>
+            <h2><i class="fas fa-heart"></i> O que é Deficiência Motora?</h2>
+            <p>Aprender sobre inclusão é um ato de amor e respeito! 💙</p>
+        </div>
+    </section>
+
+    <div class="container">
+
+        <!-- O QUE É -->
+        <div class="card">
+            <h2><i class="fas fa-book-open"></i> Entendendo a Deficiência Motora</h2>
+            <p>
+                A <strong>deficiência motora</strong> acontece quando uma pessoa tem dificuldade de movimentar uma parte do corpo — como os braços, as pernas ou até o corpo todo.
+            </p>
+            <p>
+                Isso pode afetar a forma como a pessoa <strong>anda, segura objetos, escreve ou realiza atividades do dia a dia</strong>.
+            </p>
+            <p>
+                Cada pessoa com deficiência motora é única! Algumas usam cadeira de rodas, outras usam muletas ou aparelhos especiais — e muitas não precisam de nenhum equipamento.
+            </p>
+        </div>
+
+        <!-- CAUSAS -->
+        <div class="card card-verde">
+            <h2><i class="fas fa-search"></i> Como pode acontecer?</h2>
+            <ul class="lista-dicas">
+                <li><i class="fas fa-baby"></i> <span><strong>Nascimento:</strong> Algumas pessoas já nascem com deficiência motora, como na paralisia cerebral.</span></li>
+                <li><i class="fas fa-car-crash"></i> <span><strong>Acidentes:</strong> Lesões causadas por quedas, acidentes de trânsito ou esportes.</span></li>
+                <li><i class="fas fa-heartbeat"></i> <span><strong>Doenças:</strong> Condições como derrame, esclerose múltipla ou distrofia muscular.</span></li>
+                <li><i class="fas fa-syringe"></i> <span><strong>Infecções:</strong> Algumas doenças, como poliomielite, podem afetar os músculos.</span></li>
+                <li><i class="fas fa-bone"></i> <span><strong>Amputações:</strong> Perda de um membro por acidente ou cirurgia médica.</span></li>
+            </ul>
+        </div>
+
+        <!-- TIPOS -->
+        <div class="card">
+            <h2><i class="fas fa-layer-group"></i> Tipos de Deficiência Motora</h2>
+            <div class="grid-tipos">
+                <div class="card-tipo">
+                    <i class="fas fa-child"></i>
+                    <h3>Paraplegia</h3>
+                    <p>Dificuldade de movimentar as pernas. A pessoa pode usar cadeira de rodas.</p>
+                </div>
+                <div class="card-tipo">
+                    <i class="fas fa-user"></i>
+                    <h3>Tetraplegia</h3>
+                    <p>Dificuldade de mover braços e pernas ao mesmo tempo.</p>
+                </div>
+                <div class="card-tipo">
+                    <i class="fas fa-hand-paper"></i>
+                    <h3>Hemiplegia</h3>
+                    <p>Afeta só um lado do corpo — o lado direito ou o lado esquerdo.</p>
+                </div>
+                <div class="card-tipo">
+                    <i class="fas fa-walking"></i>
+                    <h3>Monoplegia</h3>
+                    <p>Afeta apenas um membro, como um braço ou uma perna.</p>
+                </div>
+                <div class="card-tipo">
+                    <i class="fas fa-brain"></i>
+                    <h3>Paralisia Cerebral</h3>
+                    <p>Afeta o controle dos movimentos por causa de uma lesão no cérebro.</p>
+                </div>
+                <div class="card-tipo">
+                    <i class="fas fa-cut"></i>
+                    <h3>Amputação</h3>
+                    <p>Perda de parte do corpo. Próteses ajudam a recuperar muitos movimentos.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- FATO CURIOSO -->
+        <div class="fato">
+            <i class="fas fa-lightbulb"></i>
+            <p>
+                <strong>Você sabia?</strong> Cerca de <strong>17 milhões de brasileiros</strong> têm algum tipo de deficiência motora. São pessoas incríveis que contribuem imensamente para a sociedade — como atletas paralímpicos, cientistas, artistas e muito mais! 🏅
+            </p>
+        </div>
+
+        <!-- TECNOLOGIAS ASSISTIVAS -->
+        <div class="card card-verde">
+            <h2><i class="fas fa-tools"></i> Tecnologias que ajudam!</h2>
+            <p>Existem ferramentas incríveis que ajudam pessoas com deficiência motora a serem mais independentes:</p>
+            <div class="grid-tec">
+                <div class="tec-card">
+                    <i class="fas fa-wheelchair"></i>
+                    <h4>Cadeira de Rodas</h4>
+                    <p>Manuais ou elétricas para se locomover com liberdade.</p>
+                </div>
+                <div class="tec-card">
+                    <i class="fas fa-robot"></i>
+                    <h4>Próteses</h4>
+                    <p>Membros artificiais que substituem braços e pernas.</p>
+                </div>
+                <div class="tec-card">
+                    <i class="fas fa-keyboard"></i>
+                    <h4>Teclado Adaptado</h4>
+                    <p>Teclados especiais controlados por cabeça ou boca.</p>
+                </div>
+                <div class="tec-card">
+                    <i class="fas fa-microphone"></i>
+                    <h4>Controle por Voz</h4>
+                    <p>Computador e celular controlados apenas pela voz.</p>
+                </div>
+                <div class="tec-card">
+                    <i class="fas fa-eye"></i>
+                    <h4>Eye Tracking</h4>
+                    <p>Tecnologia que controla o computador pelo movimento dos olhos.</p>
+                </div>
+                <div class="tec-card">
+                    <i class="fas fa-car"></i>
+                    <h4>Carro Adaptado</h4>
+                    <p>Veículos com controles manuais para dirigir sem usar os pés.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- COMO SER UM AMIGO INCLUSIVO -->
+        <div class="card">
+            <h2><i class="fas fa-hands-helping"></i> Como ser um amigo inclusivo?</h2>
+            <ul class="lista-dicas">
+                <li><i class="fas fa-check-circle"></i> <span>Trate pessoas com deficiência motora com <strong>respeito e igualdade</strong> — elas são capazes de muita coisa!</span></li>
+                <li><i class="fas fa-check-circle"></i> <span>Pergunte <strong>antes de ajudar</strong>. Nem sempre a pessoa precisa ou quer auxílio.</span></li>
+                <li><i class="fas fa-check-circle"></i> <span>Nunca empurre uma cadeira de rodas sem <strong>pedir permissão</strong> primeiro.</span></li>
+                <li><i class="fas fa-check-circle"></i> <span>Fale <strong>diretamente com a pessoa</strong>, não com o acompanhante.</span></li>
+                <li><i class="fas fa-check-circle"></i> <span>Respeite o <strong>tempo</strong> que a pessoa leva para fazer as coisas.</span></li>
+                <li><i class="fas fa-check-circle"></i> <span>Lute por <strong>rampas, elevadores e espaços acessíveis</strong> para todos!</span></li>
+                <li><i class="fas fa-check-circle"></i> <span>Nunca use termos depreciativos. Use <strong>"pessoa com deficiência motora"</strong>.</span></li>
+            </ul>
+        </div>
+
+        <!-- QUIZ INTERATIVO -->
+        <div class="quiz-area">
+            <h2><i class="fas fa-question-circle"></i> Teste o que você aprendeu!</h2>
+            <div id="quizContainer">
+                <div class="quiz-pergunta" id="quizPergunta"></div>
+                <div class="quiz-opcoes" id="quizOpcoes"></div>
+                <div class="quiz-feedback" id="quizFeedback"></div>
+                <button class="btn-proximo" id="btnProximo" onclick="proximaPergunta()">Próxima pergunta <i class="fas fa-arrow-right"></i></button>
+            </div>
+            <div id="quizFinal" style="display:none; text-align:center;">
+                <i class="fas fa-trophy" style="font-size:4rem; color:#6A4E9B; display:block; margin-bottom:1rem;"></i>
+                <p style="font-size:1.5rem; font-weight:bold; color:#1e3d58;">Você terminou o quiz! 🎉</p>
+                <p id="quizPontuacao" style="font-size:1.3rem; margin:0.5rem 0;"></p>
+                <button onclick="reiniciarQuiz()" style="background:#057E8C; color:white; border:none; border-radius:40px; padding:0.8rem 2rem; font-size:1.2rem; cursor:pointer; font-family:'Quicksand',sans-serif; font-weight:bold; margin-top:1rem;">
+                    <i class="fas fa-redo"></i> Jogar novamente
+                </button>
+            </div>
+        </div>
+
+        <!-- DIREITOS E INCLUSÃO -->
+        <div class="card card-vermelho">
+            <h2><i class="fas fa-gavel"></i> Direitos e Inclusão</h2>
+            <p>No Brasil, pessoas com deficiência motora têm <strong>direitos garantidos por lei:</strong></p>
+            <ul class="lista-dicas" style="margin-top:1rem;">
+                <li style="background: rgba(255,255,255,0.3); border-left-color:#FFE55C;">
+                    <i class="fas fa-star" style="color:#FFE55C;"></i>
+                    <span>Acesso a rampas, elevadores e banheiros adaptados em locais públicos.</span>
+                </li>
+                <li style="background: rgba(255,255,255,0.3); border-left-color:#FFE55C;">
+                    <i class="fas fa-star" style="color:#FFE55C;"></i>
+                    <span>Vagas especiais em estacionamentos.</span>
+                </li>
+                <li style="background: rgba(255,255,255,0.3); border-left-color:#FFE55C;">
+                    <i class="fas fa-star" style="color:#FFE55C;"></i>
+                    <span>Acesso a escolas regulares e atendimento educacional especializado.</span>
+                </li>
+                <li style="background: rgba(255,255,255,0.3); border-left-color:#FFE55C;">
+                    <i class="fas fa-star" style="color:#FFE55C;"></i>
+                    <span>Benefícios de saúde, incluindo cadeira de rodas e próteses pelo SUS.</span>
+                </li>
+                <li style="background: rgba(255,255,255,0.3); border-left-color:#FFE55C;">
+                    <i class="fas fa-star" style="color:#FFE55C;"></i>
+                    <span>Proteção contra qualquer tipo de discriminação — <strong>Lei Brasileira de Inclusão (2015)</strong>.</span>
+                </li>
+            </ul>
+        </div>
+
+        <!-- MENSAGEM FINAL -->
+        <div class="mensagem-final">
+            <i class="fas fa-star"></i>
+            <p>
+                Toda pessoa merece participar da sociedade com <strong>dignidade e respeito</strong>. 
+                Inclusão não é caridade — é um <strong>direito de todos!</strong> 
+                Você faz a diferença quando escolhe ser um amigo inclusivo. 💙
+            </p>
+        </div>
+
+    </div><!-- /container -->
+
+    <footer>
+        <p>Com carinho, Amigo Ajuda 💙 · Inclusão é respeito!</p>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        const perguntas = [
+            {
+                pergunta: "O que é a deficiência motora?",
+                opcoes: [
+                    "Dificuldade de enxergar",
+                    "Dificuldade de movimentar partes do corpo",
+                    "Dificuldade de ouvir sons",
+                    "Dificuldade de falar"
+                ],
+                certa: 1,
+                explicacao: "✅ Correto! A deficiência motora afeta a capacidade de movimentar partes do corpo, como braços e pernas."
+            },
+            {
+                pergunta: "Como se chama a tecnologia que controla o computador pelo olhar?",
+                opcoes: [
+                    "Braille Digital",
+                    "Audiodescrição",
+                    "Eye Tracking",
+                    "Libras Virtual"
+                ],
+                certa: 2,
+                explicacao: "✅ Correto! O Eye Tracking (rastreamento ocular) permite controlar o computador apenas com o movimento dos olhos!"
+            },
+            {
+                pergunta: "O que é PARAPLEGIA?",
+                opcoes: [
+                    "Dificuldade de mover os braços",
+                    "Dificuldade de mover as pernas",
+                    "Dificuldade de mover um lado do corpo",
+                    "Dificuldade de falar claramente"
+                ],
+                certa: 1,
+                explicacao: "✅ Exato! Paraplegia é a dificuldade de movimentar as pernas. Muitas pessoas com paraplegia usam cadeira de rodas."
+            },
+            {
+                pergunta: "Antes de ajudar uma pessoa com deficiência motora, o que devo fazer?",
+                opcoes: [
+                    "Ajudar imediatamente sem perguntar",
+                    "Ignorar, pois ela não precisa de ajuda",
+                    "Perguntar se ela quer e precisa de ajuda",
+                    "Pedir para outra pessoa ajudar"
+                ],
+                certa: 2,
+                explicacao: "✅ Muito bem! Sempre pergunte antes! Isso respeita a autonomia e a vontade da pessoa."
+            },
+            {
+                pergunta: "Qual lei brasileira protege os direitos das pessoas com deficiência?",
+                opcoes: [
+                    "Lei do Consumidor",
+                    "Lei Brasileira de Inclusão (2015)",
+                    "Lei de Trânsito",
+                    "Lei de Educação Básica"
+                ],
+                certa: 1,
+                explicacao: "✅ Correto! A Lei Brasileira de Inclusão, de 2015, garante os direitos e combate a discriminação contra pessoas com deficiência."
+            }
+        ];
+
+        let perguntaAtual = 0;
+        let pontos = 0;
+        let respondeu = false;
+
+        function carregarPergunta() {
+            respondeu = false;
+            document.getElementById('quizFeedback').innerHTML = '';
+            document.getElementById('btnProximo').style.display = 'none';
+
+            const q = perguntas[perguntaAtual];
+            document.getElementById('quizPergunta').innerHTML =
+                `<strong>Pergunta ${perguntaAtual + 1} de ${perguntas.length}:</strong> ${q.pergunta}`;
+
+            const opcoesDiv = document.getElementById('quizOpcoes');
+            opcoesDiv.innerHTML = '';
+            q.opcoes.forEach((opcao, i) => {
+                const btn = document.createElement('button');
+                btn.className = 'quiz-btn';
+                btn.innerHTML = opcao;
+                btn.onclick = () => responder(i, btn);
+                opcoesDiv.appendChild(btn);
+            });
+        }
+
+        function responder(indice, btn) {
+            if (respondeu) return;
+            respondeu = true;
+            const q = perguntas[perguntaAtual];
+            const todosBtn = document.querySelectorAll('.quiz-btn');
+            todosBtn.forEach(b => b.disabled = true);
+
+            if (indice === q.certa) {
+                btn.classList.add('certa');
+                pontos++;
+                document.getElementById('quizFeedback').innerHTML = q.explicacao;
+            } else {
+                btn.classList.add('errada');
+                todosBtn[q.certa].classList.add('certa');
+                document.getElementById('quizFeedback').innerHTML =
+                    `❌ Não foi dessa vez! ${q.explicacao}`;
+            }
+
+            if (perguntaAtual < perguntas.length - 1) {
+                document.getElementById('btnProximo').style.display = 'inline-block';
+            } else {
+                setTimeout(mostrarFinal, 1200);
+            }
+        }
+
+        function proximaPergunta() {
+            perguntaAtual++;
+            carregarPergunta();
+        }
+
+        function mostrarFinal() {
+            document.getElementById('quizContainer').style.display = 'none';
+            document.getElementById('quizFinal').style.display = 'block';
+            const msg = pontos === perguntas.length
+                ? "🏆 Parabéns! Você acertou tudo! Você é um campeão da inclusão!"
+                : pontos >= 3
+                ? "🌟 Muito bem! Você aprendeu bastante sobre deficiência motora!"
+                : "💪 Continue aprendendo! Cada tentativa é um passo importante!";
+            document.getElementById('quizPontuacao').innerHTML =
+                `Você acertou <strong>${pontos} de ${perguntas.length}</strong> perguntas! ${msg}`;
+        }
+
+        function reiniciarQuiz() {
+            perguntaAtual = 0;
+            pontos = 0;
+            document.getElementById('quizContainer').style.display = 'block';
+            document.getElementById('quizFinal').style.display = 'none';
+            carregarPergunta();
+        }
+
+        // Iniciar quiz
+        carregarPergunta();
+    </script>
+</body>
+</html>
