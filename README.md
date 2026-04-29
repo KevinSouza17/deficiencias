@@ -1,2 +1,1 @@
-# [deficiencias](https://kevinsouza17.github.io/Deficienciacognitiva/deficiencias/index.html
-)
+https://github.com/KevinSouza17/deficiencias.git
